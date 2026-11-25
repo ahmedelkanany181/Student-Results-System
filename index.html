@@ -1,106 +1,198 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>نظام إدارة النتائج</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نتيجتي | إدارة النتائج</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+<style>
+:root{--navy:#123b46;--blue:#16858a;--pale:#e6f3f1;--bg:#f3f7f6;--ink:#20343a;--muted:#71858a;--line:#e1ebe9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif}
+.topbar{background:var(--navy);color:#fff;padding:16px 0;box-shadow:0 5px 20px #123b4620}
+.logo{width:42px;height:42px;display:grid;place-items:center;background:#249da0;border-radius:13px;font-size:21px}
+.brand{font-weight:800}.sub{font-size:11px;color:#c7dddc}
+.wrap{max-width:1120px}.welcome{padding:30px 0 22px}.welcome h1{font-size:clamp(23px,3vw,30px);font-weight:800}.welcome p,.muted{color:var(--muted)}
+.tag{background:var(--pale);color:var(--blue);border-radius:30px;padding:6px 12px;font-size:11px;font-weight:700}
+.panel,.stat{background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:0 7px 22px #1f305808}
+.panel{padding:23px;margin-bottom:20px}.stat{padding:17px;height:100%}
+.stat-head{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;font-weight:700}
+.stat-num{font-size:29px;font-weight:800;color:var(--navy);margin-top:12px}.stat-note{font-size:11px;color:#94a3b8}
+.heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.heading h2{font-size:18px;font-weight:800;margin:0}.heading p{font-size:12px;color:var(--muted);margin:5px 0 0}
+.step{width:33px;height:33px;border-radius:11px;background:var(--pale);color:var(--blue);display:grid;place-items:center;font-weight:800;flex-shrink:0}
+.form-label{font-size:13px;font-weight:700}.form-control{min-height:45px;border-radius:10px;border-color:#d6e3e0;font-size:13px}
+.form-control:focus{border-color:#55aaa6;box-shadow:0 0 0 .2rem #16858a1a}
+.btn{border-radius:10px;min-height:42px;font-size:13px;font-weight:700;padding-inline:17px}.btn-primary{background:var(--blue);border-color:var(--blue)}
+.btn-mercy{background:#e7f6ef;color:#11734e;border:1px solid #c5ead8}
+.table-wrap{overflow-x:auto}table{min-width:690px}thead th{background:#f0f6f5!important;color:#617a7d!important;font-size:12px;white-space:nowrap}tbody td{font-size:13px;vertical-align:middle}
+.avatar{display:inline-grid;place-items:center;width:35px;height:35px;border-radius:11px;background:#e3f1ef;color:var(--blue);font-weight:800;margin-left:8px}
+.chip{display:inline-block;padding:5px 9px;border-radius:8px;background:#f1f5f9;font-weight:700}
+.status{padding:5px 10px;border-radius:30px;font-size:11px;font-weight:700}.low{background:#fff1e8;color:#b45309}.pass{background:#e5f6ed;color:#11734e}
+.empty{text-align:center;padding:24px 12px;color:#94a3b8;border:1px dashed #d3e2df;border-radius:12px;background:#f8fbfa;font-size:13px}
+.report{background:#f1f7f6;border:1px solid #e0ece9;border-radius:13px;padding:17px}
+.rstat{background:#fff;border:1px solid var(--line);padding:12px 15px;border-radius:11px;min-width:155px}.rstat span{display:block;color:var(--muted);font-size:11px}.rstat strong{display:block;color:var(--navy);font-size:22px;margin-top:4px}
+.report-list{margin:12px 0 0;padding-right:22px}.report-list li{padding:6px 0;font-size:13px}
+footer{text-align:center;color:#94a3b8;font-size:11px;padding:12px 0 28px}
+@media(max-width:575px){.panel{padding:17px}.welcome{padding-top:24px}.stat{padding:13px}.stat-num{font-size:25px}}
+</style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">نظام إدارة النتائج</a>
-      <span class="navbar-text">Student Results System</span>
+<nav class="topbar"><div class="container wrap d-flex align-items-center justify-content-between">
+<div class="d-flex align-items-center gap-3"><div class="logo">ن</div><div><div class="brand">نتيجتي</div><div class="sub">منصة إدارة نتائج الطلاب</div></div></div>
+<span class="sub">لوحة التحكم الأكاديمية</span></div></nav>
+<main class="container wrap">
+<section class="welcome d-flex flex-wrap justify-content-between align-items-end gap-3">
+<div><span class="tag">نظام إدارة النتائج</span><h1 class="mt-3 mb-0">أهلاً بك في لوحة النتائج</h1><p class="mb-0 mt-2">أضف بيانات الطلاب، راجع الدرجات، واستخرج تقرير لجنة الرأفة.</p></div>
+<div class="muted small">الفصل الدراسي الحالي</div></section>
+<section class="row g-3 mb-4">
+<div class="col-6 col-lg-3"><div class="stat"><div class="stat-head"><span>إجمالي الطلاب</span></div><div class="stat-num" id="totalStudents">0</div><div class="stat-note">عدد الطلاب المسجلين</div></div></div>
+<div class="col-6 col-lg-3"><div class="stat"><div class="stat-head"><span>المتوسط العام</span></div><div class="stat-num" id="generalAverage">0</div><div class="stat-note">متوسط درجات الطلاب</div></div></div>
+<div class="col-6 col-lg-3"><div class="stat"><div class="stat-head"><span>نسبة النجاح</span></div><div class="stat-num" id="successRate">0%</div><div class="stat-note">حسب متوسط 50 فأكثر</div></div></div>
+<div class="col-6 col-lg-3"><div class="stat"><div class="stat-head"><span>حالات الرأفة</span></div><div class="stat-num" id="mercyCount">0</div><div class="stat-note">متوسط من 40 إلى 49</div></div></div>
+</section>
+<section class="panel">
+<div class="heading"><div class="d-flex align-items-center gap-3"><span class="step">01</span><div><h2>تسجيل طالب جديد</h2><p>أدخل الاسم ودرجات المواد الثلاث ونسبة الحضور</p></div></div></div>
+<div id="errorBox" class="alert alert-danger py-2 small d-none" role="alert"></div>
+<form id="studentForm" novalidate><div class="row g-3">
+<div class="col-12"><label class="form-label" for="studentName">اسم الطالب</label><input class="form-control" id="studentName" placeholder="اكتب اسم الطالب بالكامل"></div>
+<div class="col-md-4"><label class="form-label" for="grade1">درجة المادة الأولى</label><input class="form-control" id="grade1" type="number" min="0" max="100" step="any" placeholder="0 - 100"></div>
+<div class="col-md-4"><label class="form-label" for="grade2">درجة المادة الثانية</label><input class="form-control" id="grade2" type="number" min="0" max="100" step="any" placeholder="0 - 100"></div>
+<div class="col-md-4"><label class="form-label" for="grade3">درجة المادة الثالثة</label><input class="form-control" id="grade3" type="number" min="0" max="100" step="any" placeholder="0 - 100"></div>
+<div class="col-md-6"><label class="form-label" for="attendance">نسبة الحضور (%)</label><input class="form-control" id="attendance" type="number" min="0" max="100" step="any" placeholder="0 - 100"></div>
+<div class="col-12 d-flex flex-wrap gap-2 pt-2"><button class="btn btn-primary" type="submit">إضافة الطالب</button><button class="btn btn-light border" type="reset">مسح الحقول</button></div>
+</div></form></section>
+<section class="panel"><div class="heading"><div class="d-flex align-items-center gap-3"><span class="step">02</span><div><h2>سجل الطلاب</h2><p>قائمة الطلاب الذين تمت إضافتهم إلى النظام</p></div></div><span class="tag" id="listCount">0 طالب</span></div>
+<div id="studentsList"><div class="empty">لا يوجد طلاب حتى الآن. أضف أول طالب من النموذج السابق.</div></div></section>
+<section class="panel"><div class="heading"><div class="d-flex align-items-center gap-3"><span class="step">03</span><div><h2>لجنة الرأفة</h2><p>استخراج الطلاب من 40 إلى 49 وإضافة 5 درجات إلى متوسط كل منهم</p></div></div></div>
+<button type="button" id="mercyButton" class="btn btn-mercy mb-3">تفعيل لجنة الرأفة</button>
+<div id="reportBox" class="report"><div class="empty">اضغط على زر تفعيل لجنة الرأفة لعرض التقرير النهائي.</div></div></section>
+
+</main>
+<script>
+// مصفوفة تخزين الطلاب
+const studentsList = [];
+
+// كلاس الطالب مع الحقول الخاصة والتغليف
+class Student {
+  #name; #grade1; #grade2; #grade3; #attendance;
+  constructor(name, grade1, grade2, grade3, attendance) {
+    if (typeof name !== "string" || name.trim() === "") throw new Error("من فضلك أدخل اسم الطالب.");
+    this.#name = name.trim();
+    this.grade1 = grade1; this.grade2 = grade2; this.grade3 = grade3; this.attendance = attendance;
+  }
+  validateValue(value, fieldName) {
+    if (value === "" || value === null || value === undefined) throw new Error("حقل " + fieldName + " مطلوب ولا يمكن تركه فارغًا.");
+    const numberValue = Number(value);
+    if (!Number.isFinite(numberValue) || numberValue < 0 || numberValue > 100) throw new Error("يجب إدخال " + fieldName + " كرقم من 0 إلى 100.");
+    return numberValue;
+  }
+  set grade1(value) { this.#grade1 = this.validateValue(value, "المادة الأولى"); }
+  set grade2(value) { this.#grade2 = this.validateValue(value, "المادة الثانية"); }
+  set grade3(value) { this.#grade3 = this.validateValue(value, "المادة الثالثة"); }
+  set attendance(value) { this.#attendance = this.validateValue(value, "نسبة الحضور"); }
+  get name() { return this.#name; }
+  get grade1() { return this.#grade1; }
+  get grade2() { return this.#grade2; }
+  get grade3() { return this.#grade3; }
+  get attendance() { return this.#attendance; }
+  get average() { return (this.#grade1 + this.#grade2 + this.#grade3) / 3; }
+}
+
+// عناصر الشاشة
+const studentForm = document.getElementById("studentForm");
+const studentNameInput = document.getElementById("studentName");
+const grade1Input = document.getElementById("grade1");
+const grade2Input = document.getElementById("grade2");
+const grade3Input = document.getElementById("grade3");
+const attendanceInput = document.getElementById("attendance");
+const errorBox = document.getElementById("errorBox");
+const studentsListBox = document.getElementById("studentsList");
+const reportBox = document.getElementById("reportBox");
+
+function showError(message) { errorBox.textContent = message; errorBox.classList.remove("d-none"); }
+function clearError() { errorBox.textContent = ""; errorBox.classList.add("d-none"); }
+
+// منع إدخال النصوص كـ HTML غير آمن
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, function (char) {
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char];
+  });
+}
+
+// عرض القائمة وتحديث الإحصائيات
+function renderStudents() {
+  document.getElementById("totalStudents").textContent = studentsList.length;
+  document.getElementById("listCount").textContent = studentsList.length + " طالب";
+  if (studentsList.length === 0) {
+    studentsListBox.innerHTML = '<div class="empty">لا يوجد طلاب حتى الآن. أضف أول طالب من النموذج السابق.</div>';
+    document.getElementById("generalAverage").textContent = "0";
+    document.getElementById("successRate").textContent = "0%";
+    document.getElementById("mercyCount").textContent = "0";
+    return;
+  }
+  const total = studentsList.reduce((sum, student) => sum + student.average, 0);
+  const passed = studentsList.filter(student => student.average >= 50);
+  const mercy = studentsList.filter(student => student.average >= 40 && student.average <= 49);
+  document.getElementById("generalAverage").textContent = (total / studentsList.length).toFixed(1);
+  document.getElementById("successRate").textContent = Math.round(passed.length / studentsList.length * 100) + "%";
+  document.getElementById("mercyCount").textContent = mercy.length;
+  studentsListBox.innerHTML = `
+    <div class="table-wrap"><table class="table table-hover align-middle mb-0">
+      <thead><tr><th>اسم الطالب</th><th>المادة الأولى</th><th>المادة الثانية</th><th>المادة الثالثة</th><th>الحضور</th><th>المتوسط</th><th>الحالة</th></tr></thead>
+      <tbody>${studentsList.map(student => {
+        const isMercy = student.average >= 40 && student.average <= 49;
+        const status = isMercy ? "يحتاج رأفة" : (student.average >= 50 ? "اجتاز" : "أقل من 40");
+        const statusClass = student.average >= 50 ? "pass" : "low";
+        return `<tr>
+          <td><span class="avatar">${escapeHTML(student.name.charAt(0))}</span><strong>${escapeHTML(student.name)}</strong></td>
+          <td><span class="chip">${student.grade1}</span></td><td><span class="chip">${student.grade2}</span></td>
+          <td><span class="chip">${student.grade3}</span></td><td>${student.attendance}%</td>
+          <td><strong>${student.average.toFixed(2)}</strong></td><td><span class="status ${statusClass}">${status}</span></td>
+        </tr>`;
+      }).join("")}</tbody>
+    </table></div>`;
+}
+
+// إضافة طالب باستخدام Try/Catch
+studentForm.addEventListener("submit", function(event) {
+  event.preventDefault(); clearError();
+  try {
+    const student = new Student(studentNameInput.value, grade1Input.value, grade2Input.value, grade3Input.value, attendanceInput.value);
+    studentsList.push(student);
+    renderStudents();
+    studentForm.reset();
+    reportBox.innerHTML = '<div class="empty">تمت إضافة الطالب. فعّل لجنة الرأفة لتحديث التقرير.</div>';
+    studentNameInput.focus();
+  } catch (error) { showError(error.message); }
+});
+studentForm.addEventListener("reset", clearError);
+
+// لجنة الرأفة باستخدام Filter وMap وReduce
+document.getElementById("mercyButton").addEventListener("click", function() {
+  clearError();
+  const struggling = studentsList.filter(student => student.average >= 40 && student.average <= 49);
+  if (struggling.length === 0) {
+    reportBox.innerHTML = '<div class="empty">لا يوجد طلاب متوسط درجاتهم بين 40 و49.</div><p class="small fw-bold mt-3 mb-0">عدد الطلاب المتعثرين: 0</p>';
+    return;
+  }
+  const afterMercy = struggling.map(student => ({
+    name: student.name, oldAverage: student.average, newAverage: student.average + 5
+  }));
+  const totalAfterMercy = afterMercy.reduce((sum, student) => sum + student.newAverage, 0);
+  const generalAfterMercy = afterMercy.length > 0 ? totalAfterMercy / afterMercy.length : 0;
+  const names = afterMercy.map(student => `
+    <li><strong>${escapeHTML(student.name)}</strong> — قبل الرأفة: ${student.oldAverage.toFixed(2)}
+    — بعد الرأفة: <strong>${student.newAverage.toFixed(2)}</strong></li>`).join("");
+  reportBox.innerHTML = `
+    <div class="d-flex flex-wrap gap-2">
+      <div class="rstat"><span>عدد الطلاب المتعثرين</span><strong>${afterMercy.length}</strong></div>
+      <div class="rstat"><span>المتوسط العام بعد الرأفة</span><strong>${generalAfterMercy.toFixed(2)}</strong></div>
     </div>
-  </nav>
+    <h3 class="h6 fw-bold mt-4 mb-2">أسماء الطلاب ونتائجهم</h3><ol class="report-list">${names}</ol>`;
+});
 
-  <main class="container py-5">
-    <header class="text-center mb-5">
-      <span class="eyebrow">لوحة التحكم الأكاديمية</span>
-      <h1 class="fw-bold mt-2">إدارة نتائج الطلاب</h1>
-      <p class="text-secondary mb-0">أضف بيانات الطلاب، وتابع النتائج، وفعّل لجنة الرأفة بسهولة.</p>
-    </header>
-
-    <section class="card app-card mb-4">
-      <div class="card-body p-4 p-lg-5">
-        <div class="section-heading mb-4">
-          <div>
-            <h2 class="h4 fw-bold mb-1">إضافة طالب جديد</h2>
-            <p class="text-secondary small mb-0">أدخل بيانات الطالب ودرجاته ونسبة حضوره.</p>
-          </div>
-          <span class="section-icon">＋</span>
-        </div>
-
-        <div id="errorBox" class="alert alert-danger d-none" role="alert" aria-live="polite"></div>
-
-        <form id="studentForm" novalidate>
-          <div class="row g-3">
-            <div class="col-12">
-              <label for="studentName" class="form-label">اسم الطالب</label>
-              <input type="text" class="form-control" id="studentName" placeholder="مثال: أحمد محمد" autocomplete="off">
-            </div>
-            <div class="col-md-4">
-              <label for="grade1" class="form-label">درجة المادة الأولى</label>
-              <input type="number" class="form-control" id="grade1" min="0" max="100" step="any" placeholder="من 0 إلى 100">
-            </div>
-            <div class="col-md-4">
-              <label for="grade2" class="form-label">درجة المادة الثانية</label>
-              <input type="number" class="form-control" id="grade2" min="0" max="100" step="any" placeholder="من 0 إلى 100">
-            </div>
-            <div class="col-md-4">
-              <label for="grade3" class="form-label">درجة المادة الثالثة</label>
-              <input type="number" class="form-control" id="grade3" min="0" max="100" step="any" placeholder="من 0 إلى 100">
-            </div>
-            <div class="col-md-6">
-              <label for="attendance" class="form-label">نسبة الحضور (%)</label>
-              <input type="number" class="form-control" id="attendance" min="0" max="100" step="any" placeholder="من 0 إلى 100">
-            </div>
-            <div class="col-12 d-flex flex-wrap gap-2 pt-2">
-              <button type="submit" class="btn btn-primary px-4">إضافة طالب</button>
-              <button type="reset" class="btn btn-light px-4">مسح الحقول</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <section class="card app-card mb-4">
-      <div class="card-body p-4">
-        <div class="section-heading mb-3">
-          <div>
-            <h2 class="h4 fw-bold mb-1">قائمة الطلاب</h2>
-            <p class="text-secondary small mb-0">الطلاب الذين تمت إضافتهم بنجاح.</p>
-          </div>
-          <span class="counter" id="studentCount">0 طالب</span>
-        </div>
-        <div id="studentsList" class="students-list">
-          <div class="empty-state">لم تتم إضافة أي طلاب حتى الآن.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="card app-card">
-      <div class="card-body p-4">
-        <div class="section-heading mb-3">
-          <div>
-            <h2 class="h4 fw-bold mb-1">تقرير لجنة الرأفة</h2>
-            <p class="text-secondary small mb-0">يتم استخراج الطلاب الذين يتراوح متوسطهم بين 40 و49.</p>
-          </div>
-          <span class="section-icon">★</span>
-        </div>
-        <button type="button" id="mercyBtn" class="btn btn-success px-4 mb-3">تفعيل لجنة الرأفة</button>
-        <div id="reportBox" class="report-box">
-          <div class="empty-state">اضغط على زر «تفعيل لجنة الرأفة» لعرض التقرير النهائي.</div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="text-center text-secondary small py-4">
-      مشروع JavaScript النهائي — نظام إدارة النتائج
-    </footer>
-  </main>
-
-  <script src="js/main.js"></script>
+// عرض الحالة الابتدائية
+renderStudents();
+</script>
 </body>
 </html>
